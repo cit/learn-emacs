@@ -1,7 +1,23 @@
 % layout 'default';
 % title 'Welcome';
-<h2><%= $msg %></h2>
-This page was generated from the template "templates/example/welcome.html.ep"
-and the layout "templates/layouts/default.html.ep",
-<a href="<%== url_for %>">click here</a> to reload the page or
-<a href="/index.html">here</a> to move forward to a static page.
+
+<script>
+  window.Dynarch_Base_Url = "/js";
+  window.YMACS_SRC_PATH = "/js";
+</script>
+<script src="/js/thelib.js"></script>
+<script src="/js/ymacs.js"></script>
+
+% for my $j (qw(keyboard regexp frame textprop exception interactive buffer marker commands commands-utils keymap keymap-emacs keymap-isearch minibuffer tokenizer mode-paren-match mode-lisp mode-js mode-xml mode-css mode-markdown)) {
+    <script src="/js/ymacs-<%= $j %>.js"></script>
+% }
+
+<div style="display: none">
+  <div id="browser-warning" style="padding: 1em; width: 20em;">
+    <b>Note that Ymacs is only tested with Firefox for now.</b><br /><br />
+    This is mentioned on the <a href="http://www.ymacs.org/"
+                                target="_blank">project page</a>,
+    but I just thought I'd say it again.
+  </div>
+</div>
+<script src="/js/test.js"></script>
